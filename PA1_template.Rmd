@@ -8,11 +8,23 @@ output:
 
 ## Loading and preprocessing the data
 
+```{r loadingData, echo=TRUE}
+# loading data
+if (!file.exists("activity.csv")) { unzip("activity.zip") }
+activity <- read.csv("activity.csv")
 
+# preprocessing data
+activity$date <- as.Date(activity$date, "%Y-%m-%d")
+```
 
 ## What is mean total number of steps taken per day?
 
-
+```{r meanTotSteps, echo=TRUE}
+daySteps <- tapply(activity$steps, activity$date, sum, na.rm = TRUE)
+hist(daySteps, breaks = 10, main = "", xlab = "Steps taken per day")
+mean(daySteps)
+median(daySteps)
+```
 
 ## What is the average daily activity pattern?
 

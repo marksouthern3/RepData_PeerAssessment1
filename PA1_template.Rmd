@@ -28,7 +28,12 @@ median(daySteps)
 
 ## What is the average daily activity pattern?
 
-
+```{r averageDailyActivity, echo=TRUE}
+library(dplyr)
+meanIntSteps <- activity %>% group_by(interval) %>% summarise(meanSteps = mean(steps, na.rm = TRUE))
+plot(meanIntSteps, type = 'l', ylab = "Average steps", xlab = "Time interval")
+meanIntSteps$interval[which.max(meanIntSteps$meanSteps)]
+```
 
 ## Imputing missing values
 

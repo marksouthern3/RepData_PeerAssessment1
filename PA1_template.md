@@ -32,7 +32,7 @@ daySteps <- activity %>% group_by(date) %>% summarise(totalSteps = sum(steps, na
 hist(daySteps$totalSteps, breaks = 10, main = "Steps taken per day", xlab = "Steps taken")
 ```
 
-![plot of chunk unnamed-chunk-8](figure/unnamed-chunk-8-1.png)
+![](PA1_template_files/figure-html/unnamed-chunk-2-1.png)<!-- -->
 
 ```r
 totStepsMean <- mean(daySteps$totalSteps)
@@ -54,7 +54,7 @@ plot(meanIntSteps, type = 'l', main = "Daily activity pattern",
      ylab = "Average steps", xlab = "Time interval")
 ```
 
-![plot of chunk unnamed-chunk-10](figure/unnamed-chunk-10-1.png)
+![](PA1_template_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
 
 ```r
 maxInt <- meanIntSteps$interval[which.max(meanIntSteps$meanSteps)]
@@ -97,7 +97,7 @@ correctedDaySteps <- correctedActivity %>% group_by(date) %>% summarise(totalSte
 hist(correctedDaySteps$totalSteps, breaks = 10, main = "Steps taken per day", xlab = "Steps taken")
 ```
 
-![plot of chunk unnamed-chunk-14](figure/unnamed-chunk-14-1.png)
+![](PA1_template_files/figure-html/unnamed-chunk-8-1.png)<!-- -->
 
 
 ```r
@@ -105,9 +105,10 @@ correctedMean <- mean(correctedDaySteps$totalSteps)
 correctedMed <- median(correctedDaySteps$totalSteps)
 ```
 
-The corrected mean and median of the total number of steps taken per day were found to be 1.0766189 &times; 10<sup>4</sup>
-and 1.0766189 &times; 10<sup>4</sup>, respectively. After the replacement of data, both these values have 
-increased and they are now equal. 
+The corrected mean and median of the total number of steps taken per day were found to be 1.0766189\times 10^{4}
+and 1.0766189\times 10^{4}, respectively. After the replacement of missing data, both these values have 
+increased and they are now equal. On the histogram we can see that this is because there are now
+much less data points in the 0-2000 steps bin.
 
 
 ## Are there differences in activity patterns between weekdays and weekends?
@@ -134,7 +135,7 @@ xyplot(meanSteps ~ interval | dayType, data = correctedMeanIntSteps, type = "l",
        xlab = "Interval", ylab = "Number of steps")
 ```
 
-![plot of chunk unnamed-chunk-17](figure/unnamed-chunk-17-1.png)
+![](PA1_template_files/figure-html/unnamed-chunk-11-1.png)<!-- -->
 
 This plot suggests an earlier and more active start to the day on weekdays but more sustained 
 activity throughout the day on weekends.

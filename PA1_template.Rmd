@@ -90,8 +90,9 @@ correctedMed <- median(correctedDaySteps$totalSteps)
 ```
 
 The corrected mean and median of the total number of steps taken per day were found to be `r correctedMean`
-and `r correctedMed`, respectively. After the replacement of data, both these values have 
-increased and they are now equal. 
+and `r correctedMed`, respectively. After the replacement of missing data, both these values have 
+increased and they are now equal. On the histogram we can see that this is because there are now
+much less data points in the 0-2000 steps bin.
 
 
 ## Are there differences in activity patterns between weekdays and weekends?

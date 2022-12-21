@@ -37,6 +37,25 @@ meanIntSteps$interval[which.max(meanIntSteps$meanSteps)]
 
 ## Imputing missing values
 
+```{r}
+#total number of rows with missing values
+sum(is.na(activity$steps))
 
+# fill in NAs with 0, need to do this better later
+correctedActivity <- activity
+for (i in seq_along(correctedActivity$steps))
+{
+    if (is.na(correctedActivity$steps[i]))
+    {
+        correctedActivity$steps[i] <- 0
+    }
+}
+
+correctedDaySteps <- correctedActivity %>% group_by(date) %>% summarise(totalSteps = sum(steps))
+hist(correctedDaySteps$totalSteps, breaks = 10, main = "", xlab = "Total steps taken per day")
+
+mean(correctedDaySteps$totalSteps)
+median(correctedDaySteps$totalSteps)
+```
 
 ## Are there differences in activity patterns between weekdays and weekends?
